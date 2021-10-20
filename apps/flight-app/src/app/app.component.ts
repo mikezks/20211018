@@ -21,6 +21,6 @@ export class AppComponent {
 
     this.http.get<any>(
       'http://www.angular.at/api/passenger', { params: new HttpParams().set('id', 14)}
-    ).subscribe(console.log);
-  } */
+    ).subscribe(console.log); */
+  }
 }
