@@ -8,11 +8,11 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   constructor(private http: HttpClient) {
-    /* this.http.post<any>(
+   /*  this.http.post<any>(
       'http://www.angular.at/api/passenger',
       {
-        id: 0,
-        name: 'Mary',
+        id: 14,
+        name: 'Anna',
         firstName: 'Johnson',
         bonusMiles: 3,
         passengerStatus: 'Q'
@@ -21,6 +21,6 @@ export class AppComponent {
 
     this.http.get<any>(
       'http://www.angular.at/api/passenger', { params: new HttpParams().set('id', 14)}
-    ).subscribe(console.log); */
-  }
+    ).subscribe(console.log);
+  } */
 }
