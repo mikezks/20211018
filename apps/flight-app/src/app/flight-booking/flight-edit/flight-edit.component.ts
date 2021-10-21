@@ -26,5 +26,7 @@ export class FlightEditComponent implements OnInit {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  decide(answer: boolean) {}
+  decide(answer: boolean)
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  {}
 }
