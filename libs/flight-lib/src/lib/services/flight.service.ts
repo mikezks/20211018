@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, of, shareReplay, tap } from 'rxjs';
 import { Flight } from '../models/flight';
 
 @Injectable({
@@ -15,7 +15,17 @@ export class FlightService {
 
   reqDelay = 1000;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const myValues = [
+      'Vienna',
+      'Munich',
+      'New York'
+    ];
+
+    const [ firstCity, secondCity ] = myValues;
+
+    console.log(firstCity, secondCity);
+  }
 
   load(from: string, to: string, urgent: boolean): void {
     this.find(from, to, urgent).subscribe({
