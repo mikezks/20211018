@@ -11,7 +11,6 @@ export interface State {
 
 export interface FlightBookingRootState {
   flightBooking: State;
-
 }
 
 export const initialState: State = {
