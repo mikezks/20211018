@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Flight, FlightService} from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, Subscription, timer } from 'rxjs';
 import * as fromFlightBooking from '../+state';
 
 @Component({
@@ -11,12 +11,13 @@ import * as fromFlightBooking from '../+state';
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css']
 })
-export class FlightSearchComponent implements OnInit {
+export class FlightSearchComponent implements OnInit, OnDestroy {
 
   from = 'Hamburg'; // in Germany
   to = 'Graz'; // in Austria
   urgent = false;
   flights$: Observable<Flight[]> = EMPTY;
+  subscriptions = new Subscription();
 
   // "shopping basket" with selected flights
   basket: { [id: number]: boolean } = {
@@ -29,6 +30,14 @@ export class FlightSearchComponent implements OnInit {
 
   ngOnInit() {
     this.flights$ = this.store.select(fromFlightBooking.selectFlights);
+
+    this.subscriptions.add(
+      timer(0, 1_000).subscribe(console.log)
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   search(): void {
