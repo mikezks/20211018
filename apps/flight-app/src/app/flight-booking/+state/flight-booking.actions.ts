@@ -12,6 +12,11 @@ export const flightsLoaded = createAction(
   props<{ flights: Flight[] }>()
 );
 
+export const flightsLoadedError = createAction(
+  '[FlightBooking] Flights loaded Error',
+  props<{ error: any }>()
+);
+
 export const flightUpdate = createAction(
   '[FlightBooking] Flight update',
   props<{ flight: Flight }>()
@@ -31,7 +36,4 @@ class FlightManager {
   }
 }
 
-/* export const loadFlightBookingsFailure = createAction(
-  '[FlightBooking] Load FlightBookings Failure',
-  props<{ error: any }>()
-); */
+

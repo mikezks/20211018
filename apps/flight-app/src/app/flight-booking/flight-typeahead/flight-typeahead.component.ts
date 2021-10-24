@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Flight } from '@flight-workspace/flight-lib';
-import { debounceTime, distinctUntilChanged, filter, Observable, of, switchMap, tap } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, Observable, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'flight-workspace-flight-typeahead',
@@ -31,7 +31,9 @@ export class FlightTypeaheadComponent implements OnInit {
         // Side-effect: Assign loading state
         tap(() => this.loading = true),
         // Connect to Stream 2: Http call
-        switchMap(city => this.load(city)),
+        switchMap(city => this.load(city).pipe(
+          catchError(() => of([]))
+        )),
         // Side-effect: Assign loading state
         tap(() => this.loading = false)
       );
