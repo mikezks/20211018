@@ -35,3 +35,52 @@ export const reducer = createReducer(
 
 );
 
+
+const entityStateFlights = {
+  ids: [ 5, 3, 7, 1 ],
+  entities: {
+    1: {
+      id: 3,
+      from: 'Hamburg',
+      to: 'Graz'
+    },
+    3: {
+      id: 3,
+      from: 'Hamburg',
+      to: 'Graz'
+    },
+    5: {
+      id: 3,
+      from: 'Hamburg',
+      to: 'Graz'
+    },
+    7: {
+      id: 3,
+      from: 'Hamburg',
+      to: 'Graz'
+    }
+  }
+};
+
+const selectAll = [
+  {
+    id: 5,
+    from: 'Hamburg',
+    to: 'Graz'
+  },
+  {
+    id: 3,
+    from: 'Hamburg',
+    to: 'Graz'
+  },
+  {
+    id: 7,
+    from: 'Hamburg',
+    to: 'Graz'
+  },
+  {
+    id: 1,
+    from: 'Hamburg',
+    to: 'Graz'
+  }
+]
